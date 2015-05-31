@@ -1,0 +1,14 @@
+import os
+import sys
+
+# setup path and virtualenv. This is needed before we load any django modules
+root = os.path.join(os.path.dirname(__file__), '..')
+sys.path.insert(0, root)
+activate_this = os.path.join('${virtualEnv.path}'
+   'bin/activate_this.py')
+execfile(activate_this, dict(__file__=activate_this))
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "${app.name}.settings")
+application = get_wsgi_application()
